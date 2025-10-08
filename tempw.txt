@@ -1,0 +1,1761 @@
+Practical: 1(A)
+Aim:
+Create a application to print on screen the output of addition, subtraction,multiplication,division of two numbers entered by the user in c#.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs"
+Inherits="pratical1a.WebForm1" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+</head>
+<body>
+<form id="form1" runat="server">
+<div>
+<asp:Label ID="Label5" runat="server" Text="Enter Number 1:"></asp:Label>
+&nbsp;
+<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+<br />
+<br >
+<asp:Label ID="Label6" runat="server" Text="Enter Number 2:"></asp:Label>
+&nbsp;&nbsp;&nbsp;
+<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+<br />
+<br />
+<asp:Button ID="Button1" runat="server" OnClientClick="submit_click" Text="Results"
+OnClick="Button1_Click" />
+<br />
+<br />
+<br />
+<asp:Label ID="Label1" runat="server" Text="Addition is :"></asp:Label>
+<br />
+<br />
+<asp:Label ID="Label2" runat="server" Text="Subtraction is :"></asp:Label>
+<br />
+<br />
+<asp:Label ID="Label3" runat="server" Text="Multiplication is :"></asp:Label>
+<br />
+<br />
+<asp:Label ID="Label4" runat="server" Text="Division is :"></asp:Label>
+</div>
+</form>
+</body>
+</html>
+
+Default.aspx
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace prac1a
+{
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            int addition, subtraction, multiplication, division;
+            addition = Convert.ToInt32(TextBox1.Text) + Convert.ToInt32(TextBox2.Text);
+            subtraction = Convert.ToInt32(TextBox1.Text) - Convert.ToInt32(TextBox2.Text);
+            multiplication = Convert.ToInt32(TextBox1.Text) * Convert.ToInt32(TextBox2.Text);
+            division = Convert.ToInt32(TextBox1.Text) / Convert.ToInt32(TextBox2.Text);
+            Label1.Text = "Addition of the number is: " + addition;
+            Label2.Text = " Subtraction of the number is: " + subtraction;
+            Label3.Text = "Multiplication of the number is: " + multiplication;
+            Label4.Text = "Division of the number is: " + division;
+        }
+    }
+}
+Output:
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Practical: 1(B)
+Aim:
+Create a application to print Floyd’s triangle till n rows in C#.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac1b.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Floyd's triangle"></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Enter Number of Rows:"></asp:Label>
+            &nbsp;
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClientClick="submit_click" Text="Result"
+                OnClick="Button1_Click1" />
+            <br />
+            <br />
+            <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+Default.apx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+
+namespace prac1b
+{
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            int numOfRows = Convert.ToInt32(TextBox1.Text);
+            int number = 1;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 1; i <= numOfRows; i++){
+                for (int j = 1; j <= i; j++)
+                {
+                    sb.Append(number + " ");
+                    number++;
+                }
+                sb.Append("<br />");
+            }
+            Label1.Text = sb.ToString();
+        }
+    }
+}
+Output:
+ 
+
+Practical: 1(C)
+Aim:
+Create a application to demonstrate following operations:
+ i). Generate Fibonacci series.
+ ii). Test for prime numbers.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac1c.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Enter the Number"></asp:Label>
+            &nbsp;&nbsp;
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" OnClientClick="Submit_click"
+                Text="Fibbonacci Series" />
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            <br />
+            <br />
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" OnClientClick="Submit_click"
+                Text="Prime Number" />
+            <br />
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace prac1c
+{
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            int a, b, c, i, n;
+            a = 0;
+            b = 1;
+            Label2.Text = a.ToString() + b.ToString();
+            n = Convert.ToInt32(TextBox1.Text);
+            for (i = 1; i <= n; ++i)
+            {
+                c = a + b;
+                Label2.Text = Label2.Text + c.ToString();
+                a = b;
+                b = c;
+            }
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            int n, i, s = 0;
+            n = Convert.ToInt32(TextBox1.Text);
+            if (n == 0 || n == 1)
+                s = 1;
+            for (i = 2; i <= n / 2; ++i)
+            {
+                if (n % i == 0)
+                {
+                    s = 1;
+                    break;
+                }
+            }
+            if (s == 0)
+                Label3.Text = "The given number is prime";
+            else
+                Label3.Text = "The given number is not prime";
+        }
+    }
+}
+Output:
+ 
+Practical: 2(A)
+Aim:
+Create a simple application to demonstrate the concept of boxing and unboxing.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac2a.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Enter the Value"></asp:Label>
+            &nbsp;
+    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" OnClientClick="submit_click"
+                Text="Print Boxed and UnBoxed Value" />
+            <br />
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            <br />
+            <br />
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace prac2a
+{
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            int valueType = Convert.ToInt32(TextBox1.Text);
+            object boxed = valueType;
+            Label2.Text = "Boxed Value:" + boxed;
+            int unboxed = (int)boxed;
+            Label3.Text = "unboxed value:" + unboxed;
+        }
+    }
+}
+Output:
+
+ 
+
+
+
+
+
+Practical: 2(B)
+Aim:
+Create a simple application to perform addition and subtraction using delegate.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac2b.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text="Delegate Demo"></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Enter the Number 1:"></asp:Label>
+            &nbsp;
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="Enter the Number 2:"></asp:Label>
+            &nbsp;&nbsp;
+            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Delegate Demo" />
+            <br />
+            <br />
+            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace prac2b
+{
+    public delegate int MathOperation(int a, int b);
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        int Add(int a, int b)
+        {
+            return a + b;
+        }
+        int Subtract(int a, int b)
+        {
+            return a - b;
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            int x = Convert.ToInt32(TextBox1.Text);
+            int y = Convert.ToInt32(TextBox2.Text);
+            MathOperation add = new MathOperation(Add);
+            MathOperation subtract = new MathOperation(Subtract);
+            Label4.Text = add(x, y).ToString();
+            Label5.Text = subtract(x, y).ToString();
+        }
+    }
+}
+
+Output:
+ 
+
+
+
+
+
+
+
+
+
+
+Practical: 2(C)
+Aim:
+Create a simple application to demonstrate use of the concept of interfaces.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac2c.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Area of circle and rectangle using interface"></asp:Label>
+            <br />
+            <br />
+            &nbsp;<asp:Label ID="Label2" runat="server" Text="Area of a circle:"></asp:Label>
+            &nbsp;
+            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="Label4" runat="server" Text="Area of a rectangle:"></asp:Label>
+            &nbsp;<asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace prac2c 
+{ 
+     interface Area
+{
+    double show(double s, double t);
+}
+class Rect : Area
+{
+    public double show(double s, double t)
+    {
+        return s * t;
+    }
+}
+class Circle : Area
+{
+    public double show(double s, double t)
+    {
+        return (3.14 * s * s);
+    }
+}
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Rect r1 = new Rect();
+            double x = r1.show(3, 4);
+            Circle c1 = new Circle();
+            double y = c1.show(3, 4);
+            Label3.Text = x.ToString();
+            Label5.Text = y.ToString();
+        }
+    }
+}
+Output:
+ 
+Practical: 3(A)
+Aim:
+Create a simple web page with various server controls to demonstrate setting and use of their properties. (example AutoPostBack)
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac3a.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="ViewState Data:"></asp:Label>
+            &nbsp;
+&nbsp;&nbsp;
+            <asp:Label ID="lblstr" runat="server"></asp:Label>
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Get Data" />
+            <br />
+            <br />
+            <asp:ListBox ID="ListBox1" runat="server" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged1"
+                AutoPostBack="True" SelectionMode="Multiple" DataTextField="multiple">
+                <asp:ListItem>c#</asp:ListItem>
+                <asp:ListItem Value="c++"></asp:ListItem>
+                <asp:ListItem Value="java"></asp:ListItem>
+                <asp:ListItem>c</asp:ListItem>
+            </asp:ListBox>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:TextBox ID="TextBox1" runat="server" Height="92px" Style="margin-top: 0px" TextMode="MultiLine"
+        AutoPostBack="True"></asp:TextBox>
+            <br />
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Show" />
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Select Color:"></asp:Label>
+            &nbsp;
+            <asp:RadioButton ID="RadioButton1" runat="server"
+                OnCheckedChanged="RadioButton1_CheckedChanged" Text="Red" />
+            &nbsp;&nbsp;
+            <asp:RadioButton ID="RadioButton2" runat="server"
+                OnCheckedChanged="RadioButton2_CheckedChanged" Text="Green" />
+            &nbsp;&nbsp;
+            <asp:RadioButton ID="RadioButton3" runat="server"
+                OnCheckedChanged="RadioButton3_CheckedChanged" Text="Blue" />
+            <br />
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="SelectSpecial Formating:"></asp:Label>
+            &nbsp;
+            <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged"
+                Text="Bold" />
+            &nbsp;
+            <asp:CheckBox ID="CheckBox2" runat="server" OnCheckedChanged="CheckBox2_CheckedChanged"
+                Text="Italic" />
+            &nbsp;
+            <asp:CheckBox ID="CheckBox3" runat="server" OnCheckedChanged="CheckBox3_CheckedChanged"
+                Text="Underline" />
+            <br />
+            <br />
+            <asp:Label ID="Label4" runat="server" Text="Select Size:"></asp:Label>
+            &nbsp;
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True"
+                OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                <asp:ListItem>10</asp:ListItem>
+                <asp:ListItem>20</asp:ListItem>
+                <asp:ListItem>30</asp:ListItem>
+                <asp:ListItem>40</asp:ListItem>
+                <asp:ListItem>50</asp:ListItem>
+            </asp:DropDownList>
+            <br />
+            <br />
+            &nbsp;<br />
+            <asp:Label ID="Label5" runat="server" Text="Select Name:"></asp:Label>
+            &nbsp;&nbsp;
+            <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True"
+                OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                <asp:ListItem>Sandesh⚡</asp:ListItem>
+                <asp:ListItem>Aditya</asp:ListItem>
+                <asp:ListItem>Anand</asp:ListItem>
+                <asp:ListItem>Shiv</asp:ListItem>
+                <asp:ListItem>Saurav</asp:ListItem>
+                <asp:ListItem>Kartikya</asp:ListItem>
+            </asp:DropDownList>
+            <br />
+            <br />
+            <br />
+            <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+            <br />
+            <asp:Label ID="Label7" runat="server" Text="Photo"></asp:Label>
+            <br />
+            <br />
+            <asp:Image ID="Image1" runat="server"
+                ImageUrl="https://upload.wikimedia.org/wikipedia/commons/d/df/Family_Portrait.jpg" Width="160px" />
+            <br />
+            <br />
+        </div>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+namespace prac3a
+{
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                string str = "Sandesh⚡";
+                if (ViewState["name"] == null)
+                {
+                    ViewState["name"] = str;
+                }
+            }
+        }
+        protected void ListBox1_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            TextBox1.Text = "";
+            for (int i = 0; i < ListBox1.Items.Count; i++)
+            {
+                if (ListBox1.Items[i].Selected)
+                {
+                    TextBox1.Text += ListBox1.Items[i].Text + "\n";
+                }
+            }
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            lblstr.Text = ViewState["name"].ToString();
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            TextBox1.Text = "";
+            for (int i = 0; i < ListBox1.Items.Count; i++)
+            {
+                if (ListBox1.Items[i].Selected == true)
+                {
+                    TextBox1.Text = TextBox1.Text + "" + ListBox1.Items[i].Text + "\n";
+                }
+            }
+        }
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblstr.Font.Size = int.Parse(DropDownList1.SelectedItem.Text);
+        }
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblstr.Text = DropDownList2.SelectedItem.Text;
+        }
+        protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            lblstr.BackColor = System.Drawing.Color.Red;
+        }
+        protected void RadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            lblstr.BackColor = System.Drawing.Color.Green;
+        }
+        protected void RadioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            lblstr.BackColor = System.Drawing.Color.Blue;
+        }
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            lblstr.Font.Bold = true;
+        }
+        protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            lblstr.Font.Italic = true;
+        }
+        protected void CheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            lblstr.Font.Underline = true;
+        }
+    }
+}
+Output:
+ 
+
+
+Practical: 3(B)
+Aim:
+Create a simple application to demonstrate your vacation using callender control. 
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="prac.aspx.cs" Inherits="prac3b.prac" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Vacation Planner</h2>
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Select your vacation start date:"></asp:Label>
+            <br />
+            <br />
+            <asp:Calendar ID="Calendar1" runat="server"
+                OnSelectionChanged="Calender1_SelectionChanged"></asp:Calendar>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Vacation Details:"></asp:Label>
+            <br />
+            <asp:TextBox ID="TextBoxDetails" runat="server" Rows="5" TextMode="MultiLine"></asp:TextBox>
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Save Vacation" />
+            <br />
+            <br />
+            <asp:Label ID="LabelResult" runat="server"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using Antlr.Runtime.Misc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace prac3b
+{
+    public partial class prac : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void Calender1_SelectionChanged(object sender, EventArgs e)
+        {
+            LabelResult.Text = "You selected:" + Calendar1.SelectedDate.ToShortDateString();
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string vacationDate = Calendar1.SelectedDate.ToShortDateString();
+            string vacationDetails = TextBoxDetails.Text;
+            if (string.IsNullOrEmpty(vacationDetails))
+            {
+                LabelResult.Text = "Please enter vacation details.";
+            }
+            else
+            {
+                LabelResult.Text = $"Vacation on {vacationDate}:{vacationDetails}";
+            }
+        }
+    }
+}
+Output:
+ 
+
+
+
+Practical: 3(C)
+Aim:
+Demonstrate the use of treeview operations on the web form.
+stdetail.xml
+<?xml version="1.0" encoding="utf-8" ?> 
+<studentdetail>
+<student>
+<sid>1</sid>
+<sname>Saurav</sname>
+<sclass>TYIT</sclass>
+</student>
+<student>
+<sid>2</sid>
+<sname>Anand</sname>
+<sclass>TYCS</sclass>
+</student>
+<student>
+<sid>3</sid>
+<sname>Aditya</sname>
+<sclass>TYIT</sclass>
+</student>
+<student>
+<sid>4</sid>
+<sname>Shiv</sname>
+<sclass>TYCS</sclass>
+</student>
+</studentdetail>
+
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="prac.aspx.cs" Inherits="prac3c.prac" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body style="z-index: 1; width: 1387px; height: 218px; position: absolute; top: 0px; left: 0px">
+    <form id="form1" runat="server">
+        <div>
+            <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XmlDataSource1">
+                <DataBindings>
+                    <asp:TreeNodeBinding DataMember="sid" ValueField="#InnerText" />
+                    <asp:TreeNodeBinding DataMember="sname" ValueField="#InnerText" />
+                    <asp:TreeNodeBinding DataMember="sclass" ValueField="#InnerText" />
+                </DataBindings>
+            </asp:TreeView>
+            <asp:XmlDataSource ID="XmlDataSource1" runat="server"
+                DataFile="~/stdetail.xml"></asp:XmlDataSource>
+        </div>
+    </form>
+</body>
+</html>
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace prac3c
+{
+    public partial class prac : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+        }
+    }
+}
+
+
+
+
+
+
+Output:
+ 
+
+
+
+
+
+
+
+
+
+Practical: 4(A)
+Aim:
+Create a Registration form to demonstrate use of various validation controls.
+Web.config
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<appSettings>
+<add key="ValidationSettings:UnobtrusiveValidationMode" value="None" />
+</appSettings>
+  <system.web>
+    <compilation debug="true" targetFramework="4.7.2" />
+    <httpRuntime targetFramework="4.7.2" />
+  </system.web>
+  <system.codedom>
+    <compilers>
+      <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:1659;1699;1701" />
+      <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+" />
+    </compilers>
+  </system.codedom>
+</configuration>
+
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="prac.aspx.cs" Inherits="prac4a.prac" %>
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script runat="server">
+        void ValidateBtn_OnClick(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                lbl1.Text = "Thank You!";
+            }
+            else
+            {
+                lbl1.Text = "The text must be exactly 8 characters long!";
+            }
+        }
+        void ServerValidation(object source, ServerValidateEventArgs e)
+        {
+            if (e.Value.Length == 8)
+                e.IsValid = true;
+            else
+                e.IsValid = false;
+        }
+    </script>
+    <script type="text/javascript">
+        function ValidateBtn_OnClick() {
+            // Optionally add client-side validation logic here
+            return true; // Return false to prevent postback if validation fails }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Your name:"></asp:Label>
+            <br />
+            <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="reqName" runat="server" ControlToValidate="txtName"
+                ErrorMessage="Please enter your name!" ForeColor="Red"></asp:RequiredFieldValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Entr age:"></asp:Label>
+            <br />
+            <asp:TextBox ID="txt1" runat="server"></asp:TextBox>
+            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txt1" ErrorMessage="Not
+valid age"
+                ForeColor="Red" MinimumValue="18" SetFocusOnError="True" MaximumValue="18"></asp:RangeValidator>
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="password:"></asp:Label>
+            <br />
+            <asp:TextBox ID="txt11" runat="server" TextMode="Password"></asp:TextBox>
+            <br />
+            <asp:Label ID="Label4" runat="server" Text="Re Enter Password:"></asp:Label>
+            <br />
+            <asp:TextBox ID="txt12" runat="server" TextMode="Password"></asp:TextBox>
+            <br />
+            <asp:CompareValidator ID="cmpNumbers" runat="server" ControlToCompare="txt11"
+                ControlToValidate="txt12" ErrorMessage="Password should match!:" ForeColor="Red"
+                Operator="LessThan" Type="Integer">Password Should Match</asp:CompareValidator>
+            <br />
+            <br />
+            Email ID:<br />
+            <asp:TextBox ID="txtNumber" runat="server"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="rexNumber" runat="server" ControlToValidate="txtNumber"
+                ErrorMessage="Please enter valid email address!: " ForeColor="Red" ValidationExpression="http(s)?://([\w-
+]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?"></asp:RegularExpressionValidator>
+            <br />
+            <asp:Label ID="Label5" runat="server" Text="Custom text"></asp:Label>
+            <br />
+            <asp:TextBox ID="txtCustom" runat="server"></asp:TextBox>
+            <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="ServerValidation"
+                ControlToValidate="txtCustom" ForeColor="Red"></asp:CustomValidator>
+            <asp:Label ID="lbl1" runat="server" Font-Names="Verdana" Font-Size="10pt"
+                ForeColor="Red"></asp:Label>
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="ValidateBtn_OnClick" OnClientClick="ValidateBtn_OnClick"
+                Text="Validate" />
+            <br />
+            <asp:ValidationSummary ID="ValidationSummary1" runat="server" Height="38px" Width="625px" />
+        </div>
+    </form>
+</body>
+</html>
+Output:
+ 
+
+
+
+
+
+
+
+Practical: 4(B)
+Aim:
+Create a web form to demonstrate use of AdrotatorControl. 
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="prac.aspx.cs" Inherits="prac4b.prac" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+        </div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <br />
+        <asp:Timer ID="Timer1" runat="server" Interval="2000">
+        </asp:Timer>
+        <br />
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"></asp:AsyncPostBackTrigger>
+            </Triggers>
+            <ContentTemplate>
+                <asp:AdRotator ID="AdRotator1" runat="server" AdvertisementFile="~/adds.xml" Height="200px"
+                    Width="200px" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </form>
+</body>
+</html>
+adds.xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+	<Ad>
+		<ImageUrl>
+			https://assets.unileversolutions.com/v1/37335556.png?im=AspectCrop=(6
+			40,640);Resize=(640,640)
+		</ImageUrl>
+		<NavigateUrl>http://www.dove.com</NavigateUrl>
+		<AlternateText>Example Ad 1</AlternateText>
+	</Ad>
+	<Ad>
+		<ImageUrl>
+			https://freesociety.in/cdn/shop/files/Screenshot2025-06-19at1.46.47PM.png?v=1750321098
+		</ImageUrl>
+		<NavigateUrl>https://freesociety.in/products/dr-squatch-sydneys-bathwater-bliss-limited-edition-natural-soap</NavigateUrl>
+		<AlternateText>Example Ad 2</AlternateText>
+	</Ad>
+</Advertisements>
+
+Output:
+ 
+
+Practical: 4(C)
+Aim:
+Create web form to demonstrate use User controls.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="prac.aspx.cs" Inherits="prac4c.prac" %>
+<%@ Register Src="/footer.ascx" TagName="footer" TagPrefix="STfooter" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Welcome to ASP.Net"></asp:Label>
+        </div>
+        <STfooter:footer ID="footer" runat="server" />
+    </form>
+</body>
+</html>
+footer.ascx
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="footer.ascx.cs" Inherits="prac4c.WebUserControl1" %>
+<div style="font-family: Cambria; background-color: #00CCFF font-size: 14px; text-decoration:
+blink; color: #FF0000; font-weight: bold;">
+    Advanced Web programming by Shane_sd
+</div>
+Output:
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+Practical: 5(A)
+Aim:
+Create web forms to demonstrate use of Website Navigation contriols and Site Map.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="pract5a.aspx.cs" Inherits="prac5a.pract5a" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+</head>
+<body>
+<form id="form1" runat="server">
+<div>
+<asp:Label ID="Label1" runat="server" Text="home"></asp:Label>
+<br />
+<asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1">
+</asp:Menu>
+<br />
+<asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+<br />
+</div>
+</form>
+</body>
+</html>
+Default3.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="default3.aspx.cs" Inherits="prac5a.default3" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="home&gt;page3"></asp:Label>
+            <br />
+            <br />
+            <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1">
+            </asp:Menu>
+            <br />
+            <br />
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+        </div>
+    </form>
+</body>
+</html>
+Web.sitemap
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="pract5a.aspx" title="Home" description="Home page of our web
+site">
+		<siteMapNode url="clsProp.aspx" title="Page2" description="Page2" />
+		<siteMapNode url="Default3.aspx" title="Page3" description="Page3" />
+		<siteMapNode url="Default2.aspx" title="Page4" description="Page4" />
+	</siteMapNode>
+</siteMap>
+Output:
+ 
+ 
+Practical: 5(B)
+Aim:
+Create a web application to demonstrate use of Master Page and content page.
+Site1.Master
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="prac5b.Site1" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+<title></title>
+<asp:ContentPlaceHolder ID="head" runat="server">
+</asp:ContentPlaceHolder>
+</head>
+<body>
+<form id="form1" runat="server">
+<div>
+<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+</asp:ContentPlaceHolder>
+<asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+</asp:ContentPlaceHolder>
+</div>
+</form>
+</body>
+</html>
+Webform1.aspx
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="prac5b.WebForm1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Label ID="Label1" runat="server" Text="Advance web programing"></asp:Label>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <p>
+        <br />
+    </p>
+    <p>
+        <asp:Label ID="Label2" runat="server" Text="Advance java"></asp:Label>
+    </p>
+    <p>
+        &nbsp;
+    </p>
+    <p>
+        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+    </p>
+    <p>
+        <asp:Button ID="Button1" runat="server" OnClientClick="Button1_Click" Text="Demo" />
+    </p>
+</asp:Content>
+Output:
+ 
+
+
+
+
+
+
+Practical: 5(C)
+Aim:
+Create a web application to demonstraten various stages of ASP.NET Pages.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Weeb.aspx.cs" Inherits="prac5c.Weeb" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+</head>
+<body>
+<form id="form1" runat="server">
+<div>
+<asp:Label ID="lavel1" runat="server" Text="ViewState Data:"></asp:Label>
+<asp:Label ID="lblStr" runat="server"></asp:Label>
+<br />
+<br />
+<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Get data" />
+</div>
+</form>
+</body>
+</html>
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace prac5c
+{
+    public partial class Weeb : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                string str = "Sandesh Dawkhar";
+                if (ViewState["nam"] == null)
+                {
+                    ViewState["nam"] = str;
+                }
+            }
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            lblStr.Text = ViewState["nam"].ToString();
+        }
+    }
+}
+Output:
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+Practical: 7(A)
+Aim:
+Create a web application to demonstrate the use of different types of cookies.
+Cookie.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Cookie.aspx.cs" Inherits="prac7a.Cookie" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+</head>
+<body>
+<form id="form1" runat="server">
+<div>
+<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+<br />
+<br />
+<asp:Label ID="Label1" runat="server" Font-Bold="True" Text="Select the company"></asp:Label>
+<br />
+    <br />
+<asp:CheckBox ID="Apple" runat="server" Text="Apple" />
+<br />
+<asp:CheckBox ID="Dell" runat="server" Text="Dell" />
+<br />
+<asp:CheckBox ID="Lenevo" runat="server" Text="Lenevo" />
+<br />
+<asp:CheckBox ID="Acer" runat="server" Text="Acer" />
+<br />
+<asp:CheckBox ID="Sony" runat="server" Text="Sony" />
+<br />
+<asp:CheckBox ID="Wipro" runat="server" Text="Wipro" />
+<br />
+<br />
+<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
+<br />
+<br />
+<br />
+<asp:Label ID="Label3" runat="server"></asp:Label>
+</div>
+</form>
+<p>
+<br />
+</p>
+</body>
+</html>
+Cookie.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+namespace prac7a
+{
+    public partial class Cookie : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            // Creating HttpCookie instance by name "creator"
+            HttpCookie c1 = new HttpCookie("creator");
+            // Assigning value to the created cookie
+            c1.Value = "Dr. Tushar Sambare";
+            // Adding Cookie to the response instance
+            Response.Cookies.Add(c1);
+            String author = Response.Cookies["creator"].Value;
+            Label2.Text = author;
+            //Second Cookie
+            Response.Cookies["comp"].Expires = DateTime.Now.AddDays(-1);
+
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Label3.Text = "";
+            // Adding Coockies-----//
+            if (Apple.Checked)
+                Response.Cookies["comp"]["apple"] = "apple";
+            if (Dell.Checked)
+                Response.Cookies["comp"]["dell"] = "dell";
+            if (Lenevo.Checked)
+                Response.Cookies["comp"]["lenevo"] = "lenevo";
+            if (Acer.Checked)
+                Response.Cookies["comp"]["acer"] = "acer";
+            if (Sony.Checked)
+                Response.Cookies["comp"]["sony"] = "sony";
+            if (Wipro.Checked)
+                Response.Cookies["comp"]["wipro"] = "wipro";
+            // Fetching Cookies
+            if (Request.Cookies["comp"].Values.ToString() != null)
+            {
+                if (Request.Cookies["comp"]["apple"] != null)
+                    Label3.Text += Request.Cookies["comp"]["apple"] + "";
+                if (Request.Cookies["comp"]["dell"] != null)
+                    Label3.Text += Request.Cookies["comp"]["dell"] + "";
+                if (Request.Cookies["comp"]["lenevo"] != null)
+                    Label3.Text += Request.Cookies["comp"]["lenevo"] + "";
+                if (Request.Cookies["comp"]["acer"] != null)
+                    Label3.Text += Request.Cookies["comp"]["acer"] + "";
+                if (Request.Cookies["comp"]["sony"] != null)
+                    Label3.Text += Request.Cookies["comp"]["sony"] + "";
+                if (Request.Cookies["comp"]["wipro"] != null)
+                    Label3.Text += Request.Cookies["comp"]["wipro"] + "";
+            }
+            else Label3.Text = "Please select your choice";
+            Response.Cookies["comp"].Expires = DateTime.Now.AddDays(-1);
+        }
+    }
+}
+Output:
+ 
+Practical: 7(B)
+Aim:
+Create a web application to demonstrate Form Security and Window Security with proper Authentication and Authorization properties.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac7b.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="txtuser" runat="server" Text="User Name :"></asp:Label>
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="txtpwd" runat="server" Text="Password:"></asp:Label>
+            <asp:TextBox ID="TextBox2" runat="server" TextMode="Password"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Login" />
+            <br />
+            <asp:CheckBox ID="chkrem" runat="server" Text="[chkrem] Check here if this is not a public computer" />
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using static System.Net.Mime.MediaTypeNames;
+namespace prac7b
+{
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected bool authenticate(String uname, String pass)
+        {
+            if (uname == "Sandesh")
+            {
+                if (pass == "Sandesh13fr")
+                {
+                    return true;
+                }
+            }
+            if (uname == "Ved")
+            {
+                if (pass == "ved123")
+                {
+                    return true;
+                }
+            }
+            if (uname == "Sam")
+            {
+                if (pass == "sam123")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (authenticate(TextBox1.Text, TextBox2.Text))
+            {
+                FormsAuthentication.RedirectFromLoginPage(TextBox1.Text, chkrem.Checked);
+                Session["Username"] = TextBox1.Text;
+                Response.Redirect("Default2.aspx");
+            }
+            else
+            {
+                Response.Write("Invalid user name or password");
+            }
+        }
+    }
+}
+Default2.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default2.aspx.cs" Inherits="prac7b.Default2" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+</head>
+<body>
+<form id="form1" runat="server">
+<div>
+<asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Underline="True"></asp:Label>
+<asp:Label ID="Label2" runat="server" Font-Bold="True" Text="Welcome to the programing world of
+DOT.NET"></asp:Label>
+</div>
+</form>
+</body>
+</html>
+Default2.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace prac7b
+{
+    public partial class Default2 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["Username"] != null)
+            {
+                //Response.Write(Session["Username"].ToString());
+                Label1.Text = Session["Username"].ToString();
+            }
+        }
+    }
+}
+Output:
+ 
+ 
+Practical: 8(A)
+Aim:
+Create a web application for user defined exception handling.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac8b.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+namespace prac8b
+{
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                throw new UserDefinedException("New User Defined Exception");
+            }
+            catch (Exception ex)
+            {
+                Label1.Text = "Exception caught here" + ex.ToString();
+            }
+            Label2.Text = "Final Statement that is executed";
+        }
+        class UserDefinedException : Exception
+        {
+            public UserDefinedException(string str)
+            {
+                Console.WriteLine("User defined exception");
+            }
+        }
+        class HandledException
+        {
+            public static void Main()
+            {
+            }
+        }
+    }
+}
+Output:
+ 
+
+
+
+
+
+
+Practical: 9(A)
+Aim:
+Create a web application to demonstrate JB Bootstrap Button.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac10a.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Bootstrap example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com
+/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <strong>Bootsrap Button Styles in web Page<br />
+                <br />
+            </strong>
+        </div>
+        <asp:Button ID="Button1" runat="server" CssClass="btn-primary" Text=".btn-primary" />
+        <asp:Button ID="Button2" runat="server" CssClass="btn-warning" Text=".btn-warning" />
+        <br />
+        <br />
+        <asp:Button ID="Button4" runat="server" CssClass="btn-danger" Text=".btn-danger" Width="112px" />
+        <br />
+        <br />
+        <asp:Button ID="Button5" runat="server" CssClass="btn-primary disabled" Text=",btn-disabled" />
+        <asp:Button ID="Button6" runat="server" CssClass="btn-primary active" Text=".active" />
+        <br />
+        <br />
+        <asp:Button ID="Button7" runat="server" CssClass="btn-primary btn-lg" Text=".btn-lg" />
+        <asp:Button ID="Button8" runat="server" Text=".btn.xs" CssClass="btn-primary btn-xs" />
+        <br />
+        <br />
+        <asp:Button ID="Button9" runat="server" Text=".btn-block" CssClass="btn-primary btn-block" />
+    </form>
+</body>
+</html>
+
+Output:
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Practical: 9(B)
+Aim:
+Create a web application to demonstrate use of various Ajax control.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac10b.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+            <br />
+            <br />
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Partial Postback Button" />
+                    <br />
+                    <br />
+                    <asp:Label ID="Label1" runat="server" Text="Label for Partial Postback Time"></asp:Label>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+        <p>
+            &nbsp;
+        </p>
+        <p>
+            <asp:Label ID="Label3" runat="server" Text="Outside the update pannel"></asp:Label>
+        </p>
+        <p>
+            &nbsp;
+        </p>
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Total Postback" />
+        <br />
+        <br />
+        <asp:Label ID="Label2" runat="server" Text="Label for total postback time"></asp:Label>
+    </form>
+</body>
+</html>
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+namespace prac10b
+{
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string time = DateTime.Now.ToLongTimeString();
+            Label1.Text = "Showing time from panel" + time;
+            Label2.Text = "Showing time from outside" + time;
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string time = DateTime.Now.ToLongTimeString();
+            Label1.Text = "Showing time from panel" + time;
+            Label2.Text = "Showing time from outside" + time;
+        }
+    }
+}
+Output:
+
+ 
+
+
+
+
+
+
+
+
+Practical: 9(C)
+Aim:
+Create a web application to demonstrate Installation and use of NuGet package.
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="prac10c.Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="nuget Demo" />
+            <br />
+            <br />
+            <br />
+            &nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label1" runat="server" Font-Bold="False" Text="Label"></asp:Label>
+            <br />
+        </div>
+    </form>
+</body>
+</html>
+Default.aspx.cs
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Security.Principal;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace prac10c
+{
+    public partial class Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Account account = new Account
+            {
+                Name = "Sandesh Dawkhar",
+                Email = "sandesh13@microsoft.com",
+                DOB = new DateTime(2005, 06, 13, 0, 0, 0, DateTimeKind.Local),
+            };
+            string json =
+            JsonConvert.SerializeObject(account, Newtonsoft.Json.Formatting.Indented);
+            Label1.Text = json;
+        }
+    }
+    public class Account // Ensure this class is defined
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public DateTime DOB { get; set; }
+    }
+}
+Output:
+ 
+

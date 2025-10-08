@@ -1,0 +1,787 @@
+
+Practical 2: Blinking of LED with RaspberryPi
+
+
+Aim: To blink an LED using Raspberry Pi by controlling GPIO pins.
+
+Wiring up your Circuit: 
+1. Connect the GPIO22 (i.e. Physical Pin 15) Pin od raspberry pi to one end of the resistor. 
+2. Connect another end of resistor to the positive end (anode) of LED 
+3. Connect the negative end (cathode) of LED to Ground of raspberry pi. 
+4. Then Power on your raspberry pi
+
+Software Guide: Raspbian OS comes with many preinstalled programming environments. Here we will be using Python for coding. To open Python, click on the application Menu, navigate to Programming, then click on Python 3 (IDLE) an Integrated Development Environment for Python 3. After opening the IDE, go to files and open new file to start your code.
+
+
+
+
+Code: 
+
+#Blink LED Program 
+#Connect the LED to GPIO22 (i.e. Physical Pin15) 
+#import GPIO and time library 
+import RPi.GPIO as GPIO      
+from time import sleep 
+GPIO.setmode(GPIO.BCM) 
+ledPin = 22      
+#set the Pin mode you will be working with 
+#this is GPIO22 pin i.e Physical Pin15 
+#setup the ledPin(i.e. GPIO22) as output 
+GPIO.setup(ledPin, GPIO.OUT) 
+GPIO.output(ledPin, False) 
+try: 
+while True: 
+GPIO.output(ledPin, True) #Set the LED Pin to HIGH 
+print("LED ON") 
+sleep(1)                      #Wait for 1 sec 
+GPIO.output(ledPin, False)  #Set the LED Pin to LOW 
+print("LED OFF") 
+sleep(1)                      #wait for 1 sec 
+finally: 
+#reset the GPIO Pins 
+GPIO.output(ledPin, False) 
+GPIO.cleanup()
+ 
+Practical 3: Displaying different LED Patterns with Raspberry Pi
+
+
+Aim: To display different LED patterns using Raspberry Pi by connecting 8 LEDs to GPIO pins.
+
+For displaying Different LED pattern connect 8 LEDs in the same format to the pin number given in the 
+CODE FOR LED PATTERN:
+
+import RPi.GPIO as GPIO 
+import time 
+GPIO.setmode(GPIO.BOARD) 
+led1 = 29 
+led2 = 31 
+led3 = 33 
+led4 = 35 
+led5 = 36 
+led6 = 37 
+led7 = 38 
+led8 = 40 
+#setup the ledPin(i.e. GPIO22) as output 
+GPIO.setup(led1, GPIO.OUT) 
+GPIO.setup(led2, GPIO.OUT) 
+GPIO.setup(led3, GPIO.OUT) 
+GPIO.setup(led4, GPIO.OUT) 
+GPIO.setup(led5, GPIO.OUT) 
+GPIO.setup(led6, GPIO.OUT) 
+GPIO.setup(led7, GPIO.OUT) 
+GPIO.setup(led8, GPIO.OUT) 
+GPIO.output(led1, False) 
+GPIO.output(led2, False) 
+GPIO.output(led3, False) 
+GPIO.output(led4, False) 
+GPIO.output(led5, False) 
+GPIO.output(led6, False) 
+GPIO.output(led7, False) 
+GPIO.output(led8, False) 
+def ledpattern(ledVal1, ledVal2, ledVal3, ledVal4, ledVal5, ledVal6, ledVal7,ledVal8): 
+  GPIO.output(led1, ledVal1) 
+  GPIO.output(led2, ledVal2) 
+  GPIO.output(led3, ledVal3) 
+  GPIO.output(led4, ledVal4) 
+  GPIO.output(led5, ledVal5) 
+  GPIO.output(led6, ledVal6) 
+  GPIO.output(led7, ledVal7) 
+  GPIO.output(led8, ledVal8) 
+
+def patterOne(): 
+  for i in range (0, 3): 
+     ledpattern(1, 0, 1, 0, 1, 0, 1, 0) 
+  time.sleep(1) 
+
+
+    ledpattern(0, 1, 0, 1, 0, 1, 0, 1) 
+    time.sleep(1) 
+
+def patternTwo(): 
+  for i in range (0, 5): 
+     ledpattern(1, 0, 0, 0, 0, 0, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 1, 0, 0, 0, 0, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 1, 0, 0, 0, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 0, 1, 0, 0, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 0, 0, 1, 0, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 0, 0, 0, 1, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 0, 0, 0, 0, 1, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 0, 0, 0, 0, 0, 1) 
+     time.sleep(0.1) 
+def patternThree(): 
+  for i in range (0, 5): 
+     ledpattern(0, 0, 0, 0, 0, 0, 0, 1) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 0, 0, 0, 0, 1, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 0, 0, 0, 1, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 0, 0, 1, 0, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 0, 1, 0, 0, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 0, 1, 0, 0, 0, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(0, 1, 0, 0, 0, 0, 0, 0) 
+     time.sleep(0.1) 
+     ledpattern(1, 0, 0, 0, 0, 0, 0, 0) 
+     time.sleep(0.1) 
+
+def patternFour(): 
+  for i in range (0, 5): 
+     ledpattern(0, 1, 1, 1, 1, 1, 1, 1) 
+     time.sleep(0.1) 
+     ledpattern(1, 0, 1, 1, 1, 1, 1, 1) 
+     time.sleep(0.1)
+     ledpattern(1, 1, 0, 1, 1, 1, 1, 1) 
+     time.sleep(0.1) 
+     ledpattern(1, 1, 1, 0, 1, 1, 1, 1) 
+     time.sleep(0.1) 
+
+     ledpattern(1, 1, 1, 1, 0, 1, 1, 1) 
+
+     time.sleep(0.1) 
+     ledpattern(1, 1, 1, 1, 1, 0, 1, 1) 
+
+
+     time.sleep(0.1) 
+
+     ledpattern(1, 1, 1, 1, 1, 1, 0, 1) 
+     time.sleep(0.1) 
+     ledpattern(1, 1, 1, 1, 1, 1, 1, 0) 
+     time.sleep(0.1)  
+
+def patternFive(): 
+   for i in range (0, 5): 
+     ledpattern(1, 1, 1, 1, 1, 1, 1, 0) 
+     time.sleep(0.1) 
+     ledpattern(1, 1, 1, 1, 1, 1, 0, 1) 
+     time.sleep(0.1) 
+     ledpattern(1, 1, 1, 1, 1, 0, 1, 1) 
+     time.sleep(0.1) 
+     ledpattern(1, 1, 1, 1, 0, 1, 1, 1) 
+     time.sleep(0.1) 
+     ledpattern(1, 1, 1, 0, 1, 1, 1, 1) 
+     time.sleep(0.1) 
+     ledpattern(1, 1, 0, 1, 1, 1, 1, 1) 
+     time.sleep(0.1) 
+     ledpattern(1, 0, 1, 1, 1, 1, 1, 1) 
+     time.sleep(0.1) 
+     ledpattern(0, 1, 1, 1, 1, 1, 1, 1) 
+     time.sleep(0.1) 
+try: 
+   while True: 
+      patterOne() 
+      patternTwo() 
+      patternThree() 
+      patternFour() 
+      patternFive() 
+finally: 
+   #reset the GPIO Pins 
+   GPIO.cleanup()
+ 
+
+Practical 4:  Arduino RTC Clock with TM1637 Display
+
+
+ 
+
+
+Aim: To display real-time clock values on a 4-digit 7-segment display using Raspberry Pi.
+
+Project Libraries
+
+GyverTM1637
+RTClib
+
+Wiring up your Circuit: 
+1. Connect the Pin2 (5V) of Rpi to Vcc pin of Module 
+2. Connect Pin 6 (GND) of Rpi to GND of Module 
+3. Connect Pin38 (GPIO20) of Rpi to DIO of Module 
+4. Lastly connect Pin 40 (GPIO21) of Rpi to CLK of Module
+
+Code
+
+#include <Wire.h>
+#include <RTClib.h>
+#include <GyverTM1637.h>
+
+
+#define CLK 2   // TM1637 CLK to Arduino D2
+#define DIO 3   // TM1637 DIO to Arduino D3
+
+
+GyverTM1637 disp(CLK, DIO);
+
+RTC_DS3231 rtc;
+
+void setup() {
+  Wire.begin();
+  rtc.begin();
+  disp.brightness(1);
+
+  // In Wokwi, set time at start so we don't get garbage values
+  rtc.adjust(DateTime(2025, 8, 6, 15, 0, 0)); // YYYY,MM,DD,HH,MM,SS
+}
+
+void loop() {
+  DateTime now = rtc.now();
+
+  disp.displayClock(now.hour(), now.minute()); // Show HH:MM
+
+  delay(1000);
+}
+
+Diagram.json
+
+{
+  "version": 1,
+  "author": "nishant vibhute",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 77.4, "left": -106.2, "attrs": {} },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "sevseg1",
+      "top": -67.24,
+      "left": -156.17,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": -24.6, "left": 240.1, "attrs": {} }
+  ],
+  "connections": [
+    [ "sevseg1:CLK", "uno:2", "green", [ "h0" ] ],
+    [ "sevseg1:DIO", "uno:3", "green", [ "h0" ] ],
+    [ "sevseg1:VCC", "uno:5V", "red", [ "h0" ] ],
+    [ "sevseg1:GND", "uno:GND.1", "black", [ "v38.4", "h-9.9" ] ],
+    [ "rtc1:GND", "uno:GND.1", "black", [ "h-48", "v96" ] ],
+    [ "rtc1:5V", "uno:5V", "red", [ "h-28.8", "v268.5" ] ],
+    [ "rtc1:SDA", "uno:A4", "green", [ "h0" ] ],
+
+    [ "rtc1:SCL", "uno:A5", "green", [ "h0" ] ]
+
+  ],
+  "dependencies": {}
+}
+
+ 
+Practical 5: Arduino Dual-Channel Oscilloscope Simulation
+
+
+ 
+
+
+Aim: To simulate a dual-channel oscilloscope using Arduino and display input waveforms.
+The oscilloscope is an essential electronic test instrument that allows for the visualization and observation of varying signal voltages. It typically displays these signals as a two-dimensional plot, with voltage shown on the Y-axis and time on the X-axis.
+
+Wiring up your Circuit:
+Hook up your circuit as follows:
+1.	Connect the VCC pin of both potentiometers to the 5V pin of Arduino UNO.
+2.	Connect the GND pin of both potentiometers to the GND pin of Arduino UNO.
+3.	Connect the Signal (SIG) pin of the first potentiometer to Analog pin A0 of Arduino UNO.
+4.	Connect the Signal (SIG) pin of the second potentiometer to Analog pin A1 of Arduino UNO.
+
+
+Code:
+
+int sensorPin = A0;  // Analog input pin
+int sensorPin1 = A1; 
+
+
+int sensorValue = 0;
+
+void setup() {
+
+  Serial.begin(115200);
+
+}
+
+void loop() {
+  int ch1 = analogRead(sensorPin); // First signal
+  int ch2 = analogRead(sensorPin1); // Second signal
+
+  // Send both signals on one line separated by a space
+  Serial.print(ch1);
+  Serial.print(" ");
+  Serial.println(ch2);
+
+  delay(20); // ~50Hz sampling
+}
+
+
+Diagram.json
+
+{
+  "version": 1,
+  "author": "nishant vibhute",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 39, "left": -39, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -68.5, "left": 163, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot2", "top": -58.9, "left": -115.4, "attrs": {} }
+  ],
+  "connections": [
+    [ "pot1:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "pot1:GND", "uno:GND.1", "black", [ "v0" ] ],
+    [ "pot1:SIG", "uno:A0", "green", [ "v0" ] ],
+    [ "pot2:SIG", "uno:A1", "green", [ "v0" ] ],
+    [ "pot2:GND", "uno:GND.1", "black", [ "v0" ] ],
+    [ "pot2:VCC", "uno:5V", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
+
+
+ 
+Practical 6: Gas Sensor Monitoring system Using LED and LCD
+
+
+ 
+
+
+Aim: To design and build a gas sensor monitoring system using an Arduino that detects gas concentrations, displays the real-time value on an LCD, and provides a visual alert via an LED when levels exceed a safe threshold.
+This practical creates an automated gas detection and alarm system using an Arduino. It continuously reads data from a gas sensor to monitor the air for combustible gases or pollutants. The system displays the current gas level on an LCD screen and triggers a bright LED as a visual warning if dangerous levels are detected.
+
+Library: LiquidCrystal
+
+Wiring up your Circuit:
+Hook up your circuit as follows:
+Gas Sensor Connections
+1.	Connect the VCC pin of the gas sensor to the 5V pin of the Arduino UNO.
+2.	Connect the GND pin of the gas sensor to the GND pin of the Arduino UNO.
+3.	Connect the AOUT (Analog Output) pin of the gas sensor to the Analog pin A0 of the Arduino UNO.
+
+
+LED Connections
+1.	Connect the long leg (anode) of the LED to one end of the resistor.
+2.	Connect the other end of the resistor to Digital pin 8 of the Arduino UNO.
+3.	Connect the short leg (cathode) of the LED to the GND pin of the Arduino UNO.
+
+LCD Display Connections
+1.	Connect LCD pin RS (Pin 4) to Digital pin 12 of the Arduino UNO.
+2.	Connect LCD pin E (Pin 6) to Digital pin 11 of the Arduino UNO.
+3.	Connect LCD pin D4 (Pin 11) to Digital pin 5 of the Arduino UNO.
+4.	Connect LCD pin D5 (Pin 12) to Digital pin 4 of the Arduino UNO.
+5.	Connect LCD pin D6 (Pin 13) to Digital pin 3 of the Arduino UNO.
+6.	Connect LCD pin D7 (Pin 14) to Digital pin 2 of the Arduino UNO.
+7.	Connect LCD pin VSS (Pin 1) and pin R/W (Pin 5) to the GND pin of the Arduino UNO.
+8.	Connect LCD pin VDD (Pin 2) to the 5V pin of the Arduino UNO.
+
+Code
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+int gasSensorPin = A0;
+int ledPin = 1;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  lcd.begin(16, 2);
+  lcd.print("MQ-2 Gas Sensor");
+  delay(2000);
+  lcd.clear();
+}
+
+void loop() {
+  int gasValue = analogRead(gasSensorPin);
+  float ppm = map(gasValue, 0, 1023, 0, 1000);
+  lcd.setCursor(0, 0);
+  lcd.print("Gas Level:");
+  lcd.setCursor(0, 1);
+  lcd.print("Value: ");
+  lcd.print(ppm);
+  if(ppm>500)
+  {
+    digitalWrite(ledPin, HIGH);
+  }else{
+    digitalWrite(ledPin, LOW);
+  }
+  delay(1000);  // Update every second
+}
+
+Diagram.json
+
+{
+  "version": 1,
+
+  "author": "nishant vibhute",
+
+  "editor": "wokwi",
+
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 125.4, "left": -48.6, "attrs": {} },
+
+ { "type": "wokwi-lcd1602", "id": "lcd1", "top": -130.97, "left": 16, "attrs": {} },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": -189.3, "left": -194.6, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 6, "left": 368.6, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 205.55,
+      "left": 307.2,
+      "attrs": { "value": "330" }
+    }
+  ],
+  "connections": [
+    [ "lcd1:RS", "uno:12", "green", [ "v0" ] ],
+    [ "lcd1:E", "uno:11", "green", [ "v0" ] ],
+    [ "lcd1:D4", "uno:5", "green", [ "v0" ] ],
+    [ "lcd1:D5", "uno:4", "green", [ "v0" ] ],
+    [ "lcd1:D6", "uno:3", "green", [ "v0" ] ],
+    [ "lcd1:D7", "uno:2", "green", [ "v0" ] ],
+    [ "lcd1:VSS", "uno:GND.1", "green", [ "v0" ] ],
+    [ "lcd1:VDD", "uno:5V", "green", [ "v0" ] ],
+    [ "lcd1:V0", "uno:GND.1", "green", [ "v0" ] ],
+    [ "lcd1:RW", "uno:GND.1", "green", [ "v0" ] ],
+    [ "lcd1:A", "uno:5V", "green", [ "v115.2", "h-61.5" ] ],
+    [ "lcd1:K", "uno:GND.1", "green", [ "v0" ] ],
+    [ "gas1:VCC", "uno:5V", "red", [ "v18.3", "h149.8" ] ],
+    [ "gas1:GND", "uno:GND.1", "black", [ "v-0.8", "h57.6", "v240", "h66.9" ] ],
+    [ "gas1:AOUT", "uno:A0", "green", [ "h489.6", "v451.3" ] ],
+    [ "led1:A", "r1:2", "green", [ "v86.4", "h-19.2" ] ],
+    [ "r1:1", "uno:1", "green", [ "v-57.6", "h-109.8" ] ],
+    [ "led1:C", "uno:GND.1", "green", [ "h-95.6", "v86.4" ] ]
+  ],
+  "dependencies": {}
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Practical 7: Automatic Light Control using ESP32 and LDR
+
+
+ 
+
+
+Aim: To design and implement a smart, energy-efficient lighting system using an ESP32 and a Light Dependent Resistor (LDR). The goal is to automatically control a light based on the ambient brightness, creating an intelligent and responsive lighting environment without manual intervention
+
+Circuit Connections
+Hook up your components as follows:
+
+LDR Sensor Module
+1.	Connect the VCC pin of the LDR module to the VIN pin on the ESP32.
+2.	Connect the GND pin of the LDR module to a GND pin on the ESP32.
+3.	Connect the AO (Analog Output) pin of the LDR module to pin 34 of the ESP32.
+
+LED Connections
+1.	Connect the long leg (anode) of the LED to one end of the resistor.
+
+2.	Connect the other end of the resistor to pin 25 of the ESP32
+3.	Connect the short leg (cathode) of the LED to a GND pin on the ESP32.
+
+Code:
+
+// ESP32 Smart Light: LDR on GPIO34, LED on GPIO2
+// Works in Wokwi and on real ESP32.
+
+const int LDR_PIN = 34;     // ADC1 channel (input-only pin)
+const int LED_PIN = 2;      // External LED recommended
+const int N = 10;           // Samples for smoothing
+const int THRESHOLD = 2000; // Adjust after calibration
+const int HYST = 120;       // Hysteresis to avoid flicker
+
+int ledState = LOW;
+int onLevel  = THRESHOLD - HYST; // below this -> dark -> LED ON
+int offLevel = THRESHOLD + HYST; // above this -> bright -> LED OFF
+
+int smoothRead() {
+  long sum = 0;
+  for (int i = 0; i < N; i++) {
+    sum += analogRead(LDR_PIN);    // ESP32 ADC range: 0..4095
+    delay(2);
+  }
+  return sum / N;
+}
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, ledState);
+  delay(500);
+  Serial.println("Smart Light starting...");
+}
+
+void loop() {
+  int value = smoothRead();
+
+  // Simple state machine with hysteresis
+  if (ledState == LOW && value < onLevel) {
+    ledState = HIGH;
+    digitalWrite(LED_PIN, ledState);
+    Serial.printf("It looks DARK (adc=%d). LED -> ON\n", value);
+  } else if (ledState == HIGH && value > offLevel) {
+    ledState = LOW;
+    digitalWrite(LED_PIN, ledState);
+    Serial.printf("It looks BRIGHT (adc=%d). LED -> OFF\n", value);
+  } else {
+    Serial.printf("adc=%d | LED=%s\n", value, ledState ? "ON" : "OFF");
+  }
+
+
+  delay(200);
+}
+
+
+Diagram.json
+
+{
+  "version": 1,
+  "author": "nishant vibhute",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 86.4, "left": -23.96, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -9.9,
+      "left": -187.9,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 195.95,
+      "left": -115.2,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -51.6,
+      "left": 109.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 13.55,
+      "left": 134.4,
+      "attrs": { "value": "330" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ldr1:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "ldr1:AO", "esp:34", "green", [ "v0" ] ],
+    [ "esp:34", "r1:1", "green", [ "v19.2", "h-124.65", "v28.8" ] ],
+    [ "r1:2", "esp:GND.2", "black", [ "h200.4", "v-86.4" ] ],
+    [ "led1:A", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "esp:2", "green", [ "v0" ] ],
+
+    [ "led1:C", "esp:GND.2", "black", [ "v0" ] ]
+  ],
+  "dependencies": {} }
+
+
+
+ 
+Practical 8: IoT based Web Controlled Automation using Arduino
+
+
+ 
+
+
+Aim: To design and develop an IoT-based automation system using an Arduino and a Wi-Fi module (like the ESP8266). The goal is to host a web server on the microcontroller that provides a user-friendly web interface for remotely controlling electrical devices, such as lights and relays, from any browser on the same network.
+
+Project Libraries
+PubSubClient
+ArduinoJson
+
+Code
+
+#include <WiFi.h>
+#include <PubSubClient.h>
+
+#define LED_PIN 2
+
+// ---- WiFi (Wokwi defaults) ----
+const char* WIFI_SSID = "Wokwi-GUEST";
+
+const char* WIFI_PASS = "";
+
+
+const char* MQTT_HOST = "test.mosquitto.org";
+
+const uint16_t MQTT_PORT = 1883;   // plain TCP
+
+const char* TOPIC_CMD = "classroom/room9869/cmd";  // <- change "room1" for each team
+
+WiFiClient wifi;
+PubSubClient mqtt(wifi);
+
+void onMessage(char* topic, byte* payload, unsigned int length) {
+  // Convert payload to a simple String
+  String msg;
+  msg.reserve(length);
+  for (unsigned int i = 0; i < length; i++) msg += (char)payload[i];
+  msg.trim();
+  Serial.print("[MQTT] "); Serial.print(topic); Serial.print(" => "); Serial.println(msg);
+
+  // Minimal "JSON" check (no extra libs): look for "on"/"off"
+  if (msg.indexOf("\"light\":\"on\"") >= 0) {
+    digitalWrite(LED_PIN, HIGH);
+    Serial.println("LED -> ON");
+  } else if (msg.indexOf("\"light\":\"off\"") >= 0) {
+    digitalWrite(LED_PIN, LOW);
+    Serial.println("LED -> OFF");
+  } else {
+    Serial.println("Unknown command. Send {\"light\":\"on\"} or {\"light\":\"off\"}");
+  }
+}
+
+void connectWiFi() {
+  WiFi.begin(WIFI_SSID, WIFI_PASS);
+  Serial.print("WiFi ");
+  while (WiFi.status() != WL_CONNECTED) { Serial.print("."); delay(300); }
+  Serial.println(" connected");
+}
+
+void connectMQTT() {
+  mqtt.setServer(MQTT_HOST, MQTT_PORT);
+  mqtt.setCallback(onMessage);
+  while (!mqtt.connected()) {
+    String id = "esp32-led-" + String((uint32_t)esp_random(), HEX);
+    Serial.print("MQTT connect...");
+    if (mqtt.connect("mqttx-room1-nishant")) {
+      Serial.println("ok");
+      mqtt.subscribe(TOPIC_CMD);
+      Serial.print("Subscribed: "); Serial.println(TOPIC_CMD);
+    } else {
+      Serial.print("fail rc="); Serial.println(mqtt.state());
+
+      delay(1000);
+    }
+  }}
+
+
+
+void setup() {
+
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, LOW);
+  Serial.begin(115200);
+  connectWiFi();
+  connectMQTT();
+}
+
+void loop() {
+  if (WiFi.status() != WL_CONNECTED) WiFi.reconnect();
+  if (!mqtt.connected()) connectMQTT();
+  mqtt.loop();
+}
+
+Diagram.json
+
+{
+  "version": 1,
+  "author": "nishant vibhute",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -13.2,
+      "left": 186.2,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "led1:A", "esp:2", "green", [ "v0" ] ],
+    [ "led1:C", "esp:GND.2", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
+
+
+Go to 
+https://mqttx.app/web-client#/
+
+
+-  Create New Connection
+
+- Input your MQTT Host which mentioned in code 
+
+- Input Port as 8081
+
+ 
+
+
+ 
+ 
+Practical 9: Capturing Images with Raspberry Pi and Pi Camera
+
+Camera Module: 
+The Raspberry Pi Camera Board plugs directly into the CSI connector on the Raspberry Pi. The 
+camera is supported in the latest version of Raspbian, the Raspberry Pi’s preferred operating system
+
+ 
+
+
+Connect the Camera Module: 
+First of all, with the Pi switched off, you'll need to connect the Came ra Module to the Raspberry Pi's camera port, then start up the Pi and ensure the software is enabled.
+
+Software Guide: 
+Now your camera is connected and the software is enabled, you can get started by capturing an image. You can capture an image by just typing a single line command. 
+Open terminal window and type the command as follows: 
+$ sudo raspistill -o /home/pi/Desktop/image.jpg 
+
+This command will capture an image and store it at the specified location (here the location specified is /home/pi/Desktop) with the specified name (here the name is ‘image.jpg’)
+
+1.	Locate the camera port and connect the camera: 
+
+2.	Start up the Pi. 
+
+3.	Open the Raspberry Pi Configuration Tool from the main menu. 
+
+4.	Ensure the camera software is enabled. If it's not enabled, enable it and reboot your Pi to begin.
+
+
+Code: 
+
+#Camera Program 
+# import time and picamera library 
+from time import sleep 
+from picamera import Picamera 
+# selecting resolution 1280x720 px 
+camera = Picamera() 
+camera.resolution = (1280, 720)       
+camera.start_preview() 
+# Camera warm-up time 
+sleep(2) 
+camera.capture('/home/pi/Pictures/newImage.jpg') #capture and save image at specified location 
+camera.stop_preview() 
+#end of code
